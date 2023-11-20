@@ -6,8 +6,18 @@ var board = [
 ];
 var movesCount = 0;
 var roundCounter = 1;
+var canPickUp = false;
 
 function makeMove(row, col) {
+  if (canPickUp) {
+    if (board[row][col] === currentPlayer) {
+      board[row][col] = '';
+      document.getElementsByClassName('cell')[row * 3 + col].innerHTML = '';
+      canPickUp = false;
+      return;
+    }
+  }
+
   if (board[row][col] === '') {
     if (countMarkers(currentPlayer) < 3) {
       board[row][col] = currentPlayer;
@@ -22,13 +32,13 @@ function makeMove(row, col) {
     if (checkWin(currentPlayer)) {
       alert(currentPlayer + " wins!");
       resetBoard();
-    } else if (movesCount === 9) {
-      alert("It's a tie!");
-      resetBoard();
     } else {
       roundCounter++;
       updateRoundCounter();
     }
+  }
+  if (countMarkers(currentPlayer) === 3) {
+    canPickUp = true;
   }
 }
 
@@ -45,15 +55,24 @@ function countMarkers(player) {
 }
 
 function removeOldestMarker(player) {
+  var oldestMove = Infinity;
+  var oldestRow, oldestCol;
+
   for (var i = 0; i < 3; i++) {
     for (var j = 0; j < 3; j++) {
       if (board[i][j] === player) {
-        board[i][j] = '';
-        document.getElementsByClassName('cell')[i * 3 + j].innerHTML = '';
-        return;
+        var currentMove = i * 3 + j;
+        if (currentMove < oldestMove) {
+          oldestMove = currentMove;
+          oldestRow = i;
+          oldestCol = j;
+        }
       }
     }
   }
+
+  board[oldestRow][oldestCol] = '';
+  document.getElementsByClassName('cell')[oldestRow * 3 + oldestCol].innerHTML = '';
 }
 
 function checkWin(player) {
