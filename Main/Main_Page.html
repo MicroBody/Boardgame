@@ -3,6 +3,13 @@
 
 <head>
   <title>Tic Tac Toe</title>
+  <style>
+    h1,
+    h2,
+    h3 {
+      text-align: center;
+    }
+  </style>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -10,10 +17,11 @@
   <h1>Tic Tac Toe</h1>
   <table>
     <tr>
-      <td><button onclick="location.href='Main_Page.html'">Play Game</button></td>
-      <td><button onclick="location.href='History_Page.html'">Match History</button></td>
-      <td><button onclick="location.href='Reg_Page.html'">Register</button></td>
-      <td><button onclick="location.href='Login_Page.html'">Login</button></td>
+      <div class="button-container">
+        <td><button onclick="location.href='Main_Page.html'">Play Game</button></td>
+        <td><button onclick="location.href='Reg_Page.html'">Register</button></td>
+        <td><button onclick="location.href='Login_Page.html'">Login</button></td>
+      </div>
     </tr>
   </table>
   <h2>Let's Play! Basic rules: X player starts, after you have placed 3 markers, you can move your marker by clicking on
@@ -21,7 +29,6 @@
   <div id="round-counter">Round: 1</div>
   <div id="board">
   </div>
-  <h3>Tic Tac Toe</h3>
   <div id="board">
     <div class="row">
       <div class="cell" onclick="makeMove(0, 0)"></div>
