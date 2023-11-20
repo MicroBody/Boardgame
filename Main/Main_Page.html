@@ -12,6 +12,7 @@
     <tr>
       <td><button onclick="location.href='Main_Page.html'">Play Game</button></td>
       <td><button onclick="location.href='Reg_Page.html'">Register</button></td>
+      <td><button onclick="location.href='Login_Page.html'">Login</button></td>
     </tr>
   </table>
   <h2>Let's Play! Basic rules: X player starts, after you have placed 3 markers, you can move your marker by clicking on
@@ -21,6 +22,7 @@
   </div>
   <h3>Tic Tac Toe</h3>
   <div id="board">
+
     <div class="row">
       <div class="cell" onclick="makeMove(0, 0)"></div>
       <div class="cell" onclick="makeMove(0, 1)"></div>
@@ -36,6 +38,9 @@
       <div class="cell" onclick="makeMove(2, 1)"></div>
       <div class="cell" onclick="makeMove(2, 2)"></div>
     </div>
+    <button id="resetBtn">Reset</button>
+    <h4>Match History</h4>
+    <ul id="matchHistory"></ul>
   </div>
   <script src="script.js"></script>
 </body>
