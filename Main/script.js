@@ -100,7 +100,6 @@ function checkWin(player) {
 
   return false;
 }
-
 function resetBoard() {
   board = [
     ['', '', ''],
