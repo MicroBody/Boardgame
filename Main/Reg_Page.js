@@ -1,51 +1,14 @@
-const users = [
+document.querySelector('form').addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent form submission
 
-  {
+  // Get the values from the input fields
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
 
-    username: 'Test_1',
+  // Perform validation or further processing
+  // You can send these values to a server for registration, or perform client-side validation
 
-    password: 'abc123'
-
-  }
-
-];
-
-
-document.querySelector('#loginForm').addEventListener('submit', handleLogin);
-
-
-function handleLogin(event) {
-
-  event.preventDefault();
-
-
-  const username = document.getElementById('username').value;
-
-  const password = document.getElementById('password').value;
-
-  console.log("Username - ", username);
-
-  console.log("Password - ", password);
-
-
-  const userExists = users.some(user =>
-
-    user.username === username && user.password === password);
-
-  console.log("Did user exist - ", userExists);
-
-
-
-  if (userExists) {
-
-    window.location.href = './Main_Page.html';
-
-    alert('You have logged in!');
-
-  } else {
-
-    alert('Invalid Username or Password!');
-
-  }
-
-}
+  // Clear the input fields
+  document.getElementById('username').value = '';
+  document.getElementById('password').value = '';
+});
